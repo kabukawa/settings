@@ -1,0 +1,7 @@
+colorscheme koehler
+syntax on
+set hlsearch
+set ts=4
+set nowrap
+set belloff=all
+set cursorline
