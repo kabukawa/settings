@@ -1,11 +1,12 @@
-colorscheme koehler
+colorscheme elflord
 syntax on
 set hlsearch
 set ts=4
 set nowrap
 set belloff=all
-set cursorline
+set laststatus=2
 set cursorline
 set fileformats=unix,dos,mac
 set encoding=utf-8
 set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+highlight StatusLine term=none cterm=none ctermfg=black ctermbg=darkblue
