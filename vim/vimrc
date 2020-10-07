@@ -1,4 +1,4 @@
-colorscheme elflord
+colorscheme onehalfdark
 syntax on
 set hlsearch
 set ts=4
@@ -9,4 +9,6 @@ set cursorline
 set fileformats=unix,dos,mac
 set encoding=utf-8
 set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
 highlight StatusLine term=none cterm=none ctermfg=black ctermbg=darkblue
