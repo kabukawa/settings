@@ -33,8 +33,8 @@
             //"fontFace": "Biz-UDGOTHICR",
             "cursorShape":"filledBox",
             "antialiasingMode" : "aliased",
-            "useAcrylic": true,
-            "acrylicOpacity": 0.5,
+            //"useAcrylic": true,
+            //"acrylicOpacity": 0.5,
             "cursorColor":"#ddd",
             "fontFace": "Consolas",
             "fontSize": 11
