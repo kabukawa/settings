@@ -5,6 +5,7 @@ set ts=4
 set nowrap
 set belloff=all
 set laststatus=2
+set showmatch
 set cursorline
 set fileformats=unix,dos,mac
 set encoding=utf-8
