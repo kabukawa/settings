@@ -13,7 +13,7 @@ Expose the development tools and settings you are using.
 ### Editor
 
 * [Sakura Editor](https://github.com/sakura-editor/sakura/releases)
-* [Visual studio Code](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 
 ### Terminal
 
@@ -58,7 +58,6 @@ Expose the development tools and settings you are using.
 * [JTrim](https://forest.watch.impress.co.jp/library/software/jtrim/)
 * [GIMP](https://forest.watch.impress.co.jp/library/software/gimp/)
 
-
 ### WSL (Windows Subsystem for Linux) additional package
 
 Ubuntu 18.04
@@ -91,36 +90,35 @@ jq
 Additional settings
 
 ```sh
-sudo update-locale LANG = ja_JP.UTF8
+sudo update-locale LANG=ja_JP.UTF8
 sudo dpkg-reconfigure tzdata
-echo "set bell-style none" >> ~ / .inputrc
-echo "set visualbell t_vb =" >> ~ / .vimrc
-echo "export SCREENDIR = $ HOME / .screen" >> ~ / .bashrc
-echo "umask 022" >> ~ / .bashrc
-echo "alias python = python3" >> ~ / .bashrc
-echo "alias docker ='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'" >> ~ / .bashrc
+echo "set bell-style none" >> ~/.inputrc
+echo "set visualbell t_vb=" >> ~/.vimrc
+echo "export SCREENDIR=$HOME/.screen" >> ~/.bashrc
+echo "umask 022" >> ~/.bashrc
+echo "alias python=python3" >> ~/.bashrc
+echo "alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'" >> ~/.bashrc
 ```
 
 Create a symbolic link to make it easier to navigate to a Windows directory
 
 ```sh
-ln -s / mnt / c / Users / [Windows login username] / Documents Documents
-ln -s / mnt / c / Users / [Windows login username] / Downloads Downloads
+ln -s /mnt/c/Users/[Windows login username]/Documents Documents
+ln -s /mnt/c/Users/[Windows login username]/Downloads Downloads
 ```
 
 The default directory display color of WSL Ubuntu is hard to see, so change it.
 
 ```
-dircolors -p> ~ / .dircolors
+dircolors -p > ~/.dircolors
 ```
 
-Edit the output ~ / .dircolors and rewrite the following values
+Edit the output `~/.dircolors` and rewrite the following values
 
 * OTHER_WRITABLE<br>
-Changed 01; 42 to 01; 32.
+Changed 01;42 to 01;32.
 * STICKY_OTHER_WRITABLE<br>
-Changed 30; 42 to 30; 32.
-
+Changed 30;42 to 30;32.
 
 ### VS Code automatically determines character code
 
@@ -160,16 +158,15 @@ However, sometimes the judgment fails, so in that case it is necessary to manual
 * [PHP Debug](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug)
 * [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
 * [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
-    * [Remote --WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
-    * [Remote --Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-    * [Remote --Ssh](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
-    * [Remote --Ssh: Editing Configuration Files](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh-edit)
+    * [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+    * [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+    * [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
+    * [Remote - SSH: Editing Configuration Files](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh-edit)
 * [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 * [Smarty](https://marketplace.visualstudio.com/items?itemName=imperez.smarty)
 * [VSCode Map Preview](https://marketplace.visualstudio.com/items?itemName=jumpinjackie.vscode-map-preview)
 * [vscode-base64](https://marketplace.visualstudio.com/items?itemName=adamhartford.vscode-base64)
 * [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
-
 
 ### Additional settings
 
@@ -185,7 +182,7 @@ rest-client.decodeEscapedUnicodeCharacters = true
 
 ## Theme
 
-### Visualstudio Code
+### Visual Studio Code
 
 * [Atom One Dark Theme](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark)
 * [Atom One Light Theme](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onelight)
@@ -215,7 +212,7 @@ Create a key converted from PuTTY format to Openssh format for use with ssh comm
     * In case of Windows, if you put the key file other than under `~ /`, a connection error will occur.
     * For Linux, a connection error will occur unless you change the permissions so that only you can read and write after copying.
     ```sh
-    chmod 600 ~ / .ssh / *. pem
+    chmod 600 ~/.ssh/*.pem
     ```
 
 ---
@@ -350,15 +347,15 @@ fi
 Additional alias settings (Windows Git Bash)
 
 ```sh
-alias cp ='cp -i'
-alias rm ='rm -i'
-alias mv ='mv -i'
-alias crontab ='crontab -i'
-alias view ='vim -R'
-alias vimdiff ='vim -d'
-export LANG = ja_JP.UTF-8
-function _compreply_ssh () {
-   COMPREPLY = (`cat ~ / .ssh / config | grep -i -e'^ host' | cut -d" "-f 2 | grep -E" $ 2 "`)
+alias cp='cp -i'
+alias rm='rm -i'
+alias mv='mv -i'
+alias crontab='crontab -i'
+alias view='vim -R'
+alias vimdiff='vim -d'
+export LANG=ja_JP.UTF-8
+function _compreply_ssh(){
+  COMPREPLY=(`cat ~/.ssh/config | grep -i -e '^host' | cut -d " " -f 2 | grep -E "$2"`)
 }
 complete -F _compreply_ssh ssh
 ```
@@ -366,27 +363,27 @@ complete -F _compreply_ssh ssh
 Additional alias settings (WSL Ubuntu)
 
 ```sh
-export SCREENDIR = $ HOME / .screen
-alias crontab ='crontab -i'
-export SCREENDIR = / home / kabukawa / .screen
+export SCREENDIR=$HOME/.screen
+alias crontab='crontab -i'
+export SCREENDIR=/home/kabukawa/.screen
 umask 022
-alias python = python3
-alias docker ='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
-eval $ (dircolors -b ~ / .dircolors)
-complete -C'/ usr / local / bin / aws_completer' aws
+alias python=python3
+alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
+eval $(dircolors -b ~/.dircolors)
+complete -C '/usr/local/bin/aws_completer' aws
 ```
 
 ## ~ / .gitconfig (Windows)
 
-* For Windows, `C: \ Users \ [login user name]` is directly under the home directory (~ /)
+* For Windows, `C:\Users\[login user name]` is directly under the home directory (~/)
 * Replace {username} and {email address} with your own.
 
 ```ini
 [user]
-name = {username}
-email = {email address}
-[credential "helper selector"]
-        selected = <no helper>
+    name = {username}
+    email = {email address}
+[credential "helperselector"]
+    selected = <no helper>
 [diff]
     tool = vimdiff
 [difftool]
@@ -396,12 +393,12 @@ email = {email address}
 [mergetool]
     prompt = false
 [difftool "sourcetree"]
-        cmd ='C: / Program Files / WinMerge / WinMergeU.exe' \ "$ LOCAL \" \ "$ REMOTE \"
+    cmd = 'C:/Program Files/WinMerge/WinMergeU.exe' \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
-        cmd ='C: /Program Files/WinMerge/WinMergeU.exe' -e -ub -fr -ar -wl -wm -dl base -dm remote -dr local $ BASE $ REMOTE $ LOCAL -o $ MERGED
-        trustExitCode = true
+    cmd = 'C:/Program Files/WinMerge/WinMergeU.exe' -e -ub -fr -ar -wl -wm -dl base -dm remote -dr local $BASE $REMOTE $LOCAL -o $MERGED
+    trustExitCode = true
 [core]
-        quotepath = false
+    quotepath = false
 ```
 
 ## ~ / .gitconfig (Linux)
@@ -410,16 +407,16 @@ email = {email address}
 
 ```ini
 [user]
-        name = {username}
-        email = {email address}
+    name = {username}
+    email = {email address}
 [diff]
-        tool = vimdiff
+    tool = vimdiff
 [difftool]
-        prompt = false
+    prompt = false
 [merge]
-        tool = vimdiff
+    tool = vimdiff
 [mergetool]
-        prompt = false
+    prompt = false
 ```
 ## ~ / .vimrc
 
@@ -428,21 +425,21 @@ email = {email address}
 ```vim
 colorscheme onehalfdark
 set hlsearch
-set ts = 4
+set ts=4
 set nowrap
-set bell off = all
-set laststatus = 2
-set show match
+set belloff=all
+set laststatus=2
+set showmatch
 set cursorline
-set fileformats = unix, dos, mac
-set encoding = utf-8
-set file encodings = iso-2022-jp, cp932, sjis, euc-jp, utf-8
-highlight CursorLine cterm = underline ctermfg = NONE ctermbg = NONE
-highlight CursorLine gui = underline guifg = NONE guibg = NONE
-highlight StatusLine term = none cterm = none ctermfg = black ctermbg = darkblue
+set fileformats=unix,dos,mac
+set encoding=utf-8
+set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
+highlight StatusLine term=none cterm=none ctermfg=black ctermbg=darkblue
 ```
 
-## ~ / .screenrc
+## ~/.screenrc
 
 ```sh
 defutf8 on
@@ -455,20 +452,20 @@ vbell off
 #Color
 #If orange turns red, screen may not support 256 colors
 # FYI: https://qiita.com/trapple/items/8ad1b0a7c4fa5b8341b0
-# $ brew tap homebrew / dupes
+# $ brew tap homebrew/dupes
 # $ brew install screen
 defbce on
 term xterm-256color
 
 
 # Status line
-hardstatus alwayslastline "% {= cd}% -w% {= wk}% n% t *% {-}% + w% = LoadAVG [% l]"
+hardstatus alwayslastline "%{= cd} %-w%{= wk} %n %t* %{-}%+w %= LoadAVG [%l] "
 
 # Escape key
-#escape ^ Tt
+#escape ^Tt
 
 #Mouse scroll
-termcapinfo xterm * ti @: te @
+termcapinfo xterm* ti@:te@
 
 # Number of scroll lines
 defscrollback 10000
@@ -477,13 +474,13 @@ defscrollback 10000
 altscreen on
 
 #Default shell
-shell $ SHELL
+shell $SHELL
 ```
 
-## ~ / .ssh / config
+## ~/.ssh/config
 
-* For Windows, `C: \ Users \ [login user name]` is directly under the home directory (~ /)
-* For Linux, change the permissions under ~ / .ssh / so that only you can read and write.
+* For Windows, `C:\Users\[login user name]` is directly under the home directory (~/)
+* For Linux, change the permissions under `~/.ssh/` so that only you can read and write.
 * Replace {username} and {keyfilename} with your own.
 
 ```sh
@@ -491,7 +488,7 @@ shell $ SHELL
 Host {host name}
   HostName {IP address}
   User {user name}
-  IdentityFile ~ / .ssh / {key file name}
+  IdentityFile ~/.ssh/{key file name}
 ```
 
 * If you want to prompt the environment name after login
@@ -501,18 +498,18 @@ Host {host name}
 Host {host name}
   HostName {IP address}
   User {user name}
-  IdentityFile ~ / .ssh / {key file name}
+  IdentityFile ~/.ssh/{key file name}
   RequestTTY yes
-  RemoteCommand PS1 = "\ [\ e [1; 32m \] [\ u @ \ h \ w] [environment name] $ \ [\ e [m \]" bash --login
+  RemoteCommand PS1="\[\e[1;32m\][\u@\h \w] [environment name] $ \[\e[m\]" bash --login
 ```
 
 ## ~ / .my.cnf
 
 ```ini
 [client]
-host = {hostname}
-user = {username}
-password = {password}
-port = 3306
-database = {schema name}
+host={hostname}
+user={username}
+password={password}
+port=3306
+database={schema name}
 ```

@@ -13,7 +13,7 @@
 ### エディタ
 
 * [サクラエディタ](https://github.com/sakura-editor/sakura/releases)
-* [Visualstudio Code](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 
 ### Terminal
 
@@ -113,7 +113,7 @@ WSL Ubuntuのデフォルトのディレクトリ表示色は見辛いので変�
 dircolors -p > ~/.dircolors
 ```
 
-出力された ~/.dircolors を編集して、以下の値を書き換える
+出力された `~/.dircolors` を編集して、以下の値を書き換える
 
 * OTHER_WRITABLE<br>
 01;42 を 01;32 に変更。
@@ -182,7 +182,7 @@ rest-client.decodeEscapedUnicodeCharacters = true
 
 ## テーマ
 
-### Visualstudio Code
+### Visual Studio Code
 
 * [Atom One Dark Theme](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark)
 * [Atom One Light Theme](https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onelight)
@@ -384,7 +384,7 @@ complete -C '/usr/local/bin/aws_completer' aws
 	name = {ユーザー名}
 	email = {メールアドレス}
 [credential "helperselector"]
-        selected = <no helper>
+    selected = <no helper>
 [diff]
     tool = vimdiff
 [difftool]
@@ -394,12 +394,12 @@ complete -C '/usr/local/bin/aws_completer' aws
 [mergetool]
     prompt = false
 [difftool "sourcetree"]
-        cmd = 'C:/Program Files/WinMerge/WinMergeU.exe' \"$LOCAL\" \"$REMOTE\"
+    cmd = 'C:/Program Files/WinMerge/WinMergeU.exe' \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
-        cmd = 'C:/Program Files/WinMerge/WinMergeU.exe' -e -ub -fr -ar -wl -wm -dl base -dm remote -dr local $BASE $REMOTE $LOCAL -o $MERGED
-        trustExitCode = true
+    cmd = 'C:/Program Files/WinMerge/WinMergeU.exe' -e -ub -fr -ar -wl -wm -dl base -dm remote -dr local $BASE $REMOTE $LOCAL -o $MERGED
+    trustExitCode = true
 [core]
-        quotepath = false
+    quotepath = false
 ```
 
 ## ~/.gitconfig(Linux)
@@ -408,16 +408,16 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 ```ini
 [user]
-        name = {ユーザー名}
-        email = {メールアドレス}
+    name = {ユーザー名}
+    email = {メールアドレス}
 [diff]
-        tool = vimdiff
+    tool = vimdiff
 [difftool]
-        prompt = false
+    prompt = false
 [merge]
-        tool = vimdiff
+    tool = vimdiff
 [mergetool]
-        prompt = false
+    prompt = false
 ```
 
 ## ~/.vimrc
@@ -482,7 +482,7 @@ shell $SHELL
 ## ~/.ssh/config
 
 * Windowsの場合は `C:\Users\[ログインユーザー名]` 直下がホームディレクトリ(~/)
-* Linuxの場合は ~/.ssh/ の下は自分のみ読み書き可能なるようにパーミッションを変更する。
+* Linuxの場合は `~/.ssh/` の下は自分のみ読み書き可能なるようにパーミッションを変更する。
 * {ユーザー名}と{鍵ファイル名}は自分のものに置き換えること。
 
 ```sh
@@ -495,7 +495,7 @@ Host {ホスト名}
 
 * 環境名をログイン後のプロンプトに出したい場合
 
-```
+```sh
 ## develop
 Host {ホスト名}
   HostName {IPアドレス}
