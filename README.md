@@ -424,6 +424,7 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 ```vim
 colorscheme onehalfdark
+syntax on
 set hlsearch
 set ts=4
 set nowrap
