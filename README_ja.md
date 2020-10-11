@@ -1,19 +1,19 @@
-# settings
+# 設定
 
-My tools setting/configurarion files.
+私のツールの設定/構成ファイル。
 
 ---
 
-# Development environment (for Windows)
+# 開発環境(Windows向け)
 
-Expose the development tools and settings you are using.
+自分の使っている開発ツールや設定を晒しておく。
 
-## Development tools
+## 開発ツール
 
-### Editor
+### エディタ
 
-* [Sakura Editor](https://github.com/sakura-editor/sakura/releases)
-* [Visual studio Code](https://code.visualstudio.com/)
+* [サクラエディタ](https://github.com/sakura-editor/sakura/releases)
+* [Visualstudio Code](https://code.visualstudio.com/)
 
 ### Terminal
 
@@ -21,12 +21,12 @@ Expose the development tools and settings you are using.
 * [Windows Terminal](https://www.microsoft.com/ja-jp/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)
 * [Tera Term](https://forest.watch.impress.co.jp/library/software/utf8teraterm/)
 
-### DB access
+### DBアクセス
 
 * [A5SQL Mk2](https://a5m2.mmatsubara.com/)
 * [MySQL Workbench](https://www.mysql.com/jp/products/workbench/)
 
-### Integrated development environment
+### 統合開発環境
 
 * [PHP Storm](https://www.jetbrains.com/ja-jp/phpstorm/)
 * [Eclipse PHP Development Tools](https://www.eclipse.org/pdt/)
@@ -36,34 +36,33 @@ Expose the development tools and settings you are using.
 * [Git for Windows](https://gitforwindows.org/)
 * [Source Tree](https://www.sourcetreeapp.com/)
 
-### Difference comparison / merge
+### 差分比較/マージ
 
 * [WinMerge](https://winmergejp.bitbucket.io/)
 
-### Virtual machine
+### 仮想マシン
 
 * [Docker for Windows](https://docs.docker.com/docker-for-windows/install/)
 
-### Document generation
+### ドキュメント生成
 
 * [Doxygen](http://www.doxygen.jp/)
 * [Graphviz](https://www.graphviz.org/)
 
-### Compress / decompress
+### 圧縮/解凍
 
 * [Lhaplus](https://forest.watch.impress.co.jp/library/software/lhaplus/)
 
-### image editing
+### 画像編集
 
 * [JTrim](https://forest.watch.impress.co.jp/library/software/jtrim/)
 * [GIMP](https://forest.watch.impress.co.jp/library/software/gimp/)
 
-
-### WSL (Windows Subsystem for Linux) additional package
+### WSL(Windows Subsystem for Linux)追加パッケージ
 
 Ubuntu 18.04
 
-Package update
+パッケージ最新化
 
 ```sh
 sudo apt -y update
@@ -71,7 +70,7 @@ sudo apt -y upgrade
 sudo apt -y autoremove
 ```
 
-Install additional packages
+追加パッケージインストール
 
 ```sh
 sudo apt -y install \
@@ -88,52 +87,51 @@ nkf \
 jq
 ```
 
-Additional settings
+追加設定
 
 ```sh
-sudo update-locale LANG = ja_JP.UTF8
+sudo update-locale LANG=ja_JP.UTF8
 sudo dpkg-reconfigure tzdata
-echo "set bell-style none" >> ~ / .inputrc
-echo "set visualbell t_vb =" >> ~ / .vimrc
-echo "export SCREENDIR = $ HOME / .screen" >> ~ / .bashrc
-echo "umask 022" >> ~ / .bashrc
-echo "alias python = python3" >> ~ / .bashrc
-echo "alias docker ='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'" >> ~ / .bashrc
+echo "set bell-style none" >> ~/.inputrc
+echo "set visualbell t_vb=" >> ~/.vimrc
+echo "export SCREENDIR=$HOME/.screen" >> ~/.bashrc
+echo "umask 022" >> ~/.bashrc
+echo "alias python=python3" >> ~/.bashrc
+echo "alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'" >> ~/.bashrc
 ```
 
-Create a symbolic link to make it easier to navigate to a Windows directory
+Windowsのディレクトリへの移動を簡単にするため、シンボリックリンクを作成しておく
 
 ```sh
-ln -s / mnt / c / Users / [Windows login username] / Documents Documents
-ln -s / mnt / c / Users / [Windows login username] / Downloads Downloads
+ln -s /mnt/c/Users/[Windowsのログインユーザー名]/Documents Documents
+ln -s /mnt/c/Users/[Windowsのログインユーザー名]/Downloads Downloads
 ```
 
-The default directory display color of WSL Ubuntu is hard to see, so change it.
+WSL Ubuntuのデフォルトのディレクトリ表示色は見辛いので変更する。
 
 ```
-dircolors -p> ~ / .dircolors
+dircolors -p > ~/.dircolors
 ```
 
-Edit the output ~ / .dircolors and rewrite the following values
+出力された ~/.dircolors を編集して、以下の値を書き換える
 
 * OTHER_WRITABLE<br>
-Changed 01; 42 to 01; 32.
+01;42 を 01;32 に変更。
 * STICKY_OTHER_WRITABLE<br>
-Changed 30; 42 to 30; 32.
+30;42 を 30;32 に変更。
 
+### VSCodeで文字コードの自動判定
 
-### VS Code automatically determines character code
-
-Find the following item in Settings.json and set it to true.<br>
-(Since it is a check box on the latest "Settings" screen, you can just turn it on.)
+Settings.json で以下の項目を探して trueにする。<br>
+(最新の「設定」画面ではチェックボックスになっているので ON にするだけでOK)
 
 ```json
 "files.autoGuessEncoding": true
 ```
 
-However, sometimes the judgment fails, so in that case it is necessary to manually specify the character code and reopen.
+但し、時々判定に失敗するので、そのときは手動で文字コードを指定して開き直す必要がある。
 
-## Extensions
+## 拡張機能
 
 ### Google Chrome
 
@@ -142,8 +140,8 @@ However, sometimes the judgment fails, so in that case it is necessary to manual
 * [LTTM](https://chrome.google.com/webstore/detail/lttm/jdidcgkdggndpodjbipodfefnpgjooeh)
 * [Link Checker](https://chrome.google.com/webstore/detail/link-checker/olcpkmmoifipcklgnphbhdhbpfniijmb)
 * [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj)
-* [Google Translate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
-* [One Click Full Page Screenshot](https://chrome.google.com/webstore/detail/one-click-full-page-scree/dchfhilphcokdhfmikknmgdbmklbnnle)
+* [Google 翻訳](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
+* [One Click Full Pageスクリーンショット](https://chrome.google.com/webstore/detail/one-click-full-page-scree/dchfhilphcokdhfmikknmgdbmklbnnle)
 
 ### Visualstudio Code
 
@@ -160,22 +158,21 @@ However, sometimes the judgment fails, so in that case it is necessary to manual
 * [PHP Debug](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug)
 * [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
 * [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
-    * [Remote --WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
-    * [Remote --Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-    * [Remote --Ssh](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
-    * [Remote --Ssh: Editing Configuration Files](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh-edit)
+    * [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+    * [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+    * [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
+    * [Remote - SSH: Editing Configuration Files](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh-edit)
 * [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 * [Smarty](https://marketplace.visualstudio.com/items?itemName=imperez.smarty)
 * [VSCode Map Preview](https://marketplace.visualstudio.com/items?itemName=jumpinjackie.vscode-map-preview)
 * [vscode-base64](https://marketplace.visualstudio.com/items?itemName=adamhartford.vscode-base64)
 * [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 
-
-### Additional settings
+### 追加設定
 
 * REST Client
-If you keep the default, the returned JSON will be garbled if it contains Japanese, so find the following item in Settings.json and set it to true.<br>
-(Since it is a check box on the latest "Settings" screen, you can just turn it on.)
+デフォルトのままだと戻ってくるJSONに日本語が含まれてると文字化けするので、Settings.json で以下の項目を探して trueにする。
+(最新の「設定」画面ではチェックボックスになっているので ON にするだけでOK)
 
 ```json
 rest-client.decodeEscapedUnicodeCharacters = true
@@ -183,7 +180,7 @@ rest-client.decodeEscapedUnicodeCharacters = true
 
 ---
 
-## Theme
+## テーマ
 
 ### Visualstudio Code
 
@@ -198,34 +195,34 @@ rest-client.decodeEscapedUnicodeCharacters = true
 
 ---
 
-# Procedure
+# 手順
 
-## Key file conversion
+## 鍵ファイルの変換
 
-Create a key converted from PuTTY format to Openssh format for use with ssh commands.
+PuTTY形式 から sshコマンドなどで使うための Openssh形式に変換した鍵を作成する。
 
-### Conversion method
+### 変換方法
 
-1. Start [PuTTY Gen (PuTTY Key Generator)] from the start menu.
-2. Load the PuTTY format key file with [File]-[Load private key].
-3. Select [Conversions]-[Export OpenSSH key].
-4. Do I have to protect it with a passphrase? A confirmation dialog box will be displayed. Select [Yes].
-5. Enter the file name and save. For convenience, it is recommended that the extension of the original file name (* .ppk) is .pem.
-6. Copy the generated key file under `~ / .ssh /`.
-    * In case of Windows, if you put the key file other than under `~ /`, a connection error will occur.
-    * For Linux, a connection error will occur unless you change the permissions so that only you can read and write after copying.
+1. スタートメニューから [PuTTY Gen(PuTTY Key Generator)] を起動する。
+2. [File]-[Load private key] で PuTTY形式の鍵ファイルを読み込む。
+3. [Conversions]-[Export OpenSSH key]を選択する。
+4. パスフレーズで保護しなくて良いか？確認するダイアログボックスが表示されるので [はい] を選択する。
+5. ファイル名を入力して保存する。便宜上、元ファイル名(*.ppk)の拡張子を .pem にしたものを推奨。
+6. 生成された鍵ファイルを `~/.ssh/` の下にコピーする。
+    * Windowsの場合は `~/` の配下以外に鍵ファイルを置くと接続エラーになる。
+    * Linuxの場合はコピー後にパーミッションを自分のみ読み書きできるように変更しないと接続エラーになる。
     ```sh
-    chmod 600 ~ / .ssh / *. pem
+    chmod 600 ~/.ssh/*.pem
     ```
 
 ---
 
-# setting file
+# 設定ファイル
 
-## ~ / .bashrc
+## ~/.bashrc
 
-* For Gitbash. Below is a copy of WSL's Ubuntu.
-* For Windows, `C: \ Users \ [login user name]` is directly under the home directory (~ /)
+* Gitbash用。以下はWSLのUbuntuのもののコピー。
+* Windowsの場合は `C:\Users\[ログインユーザー名]` 直下がホームディレクトリ(~/)
 
 ```sh
 # ~/.bashrc: executed by bash(1) for non-login shells.
@@ -347,45 +344,46 @@ if ! shopt -oq posix; then
 fi
 ```
 
-Additional alias settings (Windows Git Bash)
+追加のエイリアス設定(Windows GitBash)
 
 ```sh
-alias cp ='cp -i'
-alias rm ='rm -i'
-alias mv ='mv -i'
-alias crontab ='crontab -i'
-alias view ='vim -R'
-alias vimdiff ='vim -d'
-export LANG = ja_JP.UTF-8
-function _compreply_ssh () {
-   COMPREPLY = (`cat ~ / .ssh / config | grep -i -e'^ host' | cut -d" "-f 2 | grep -E" $ 2 "`)
+alias cp='cp -i'
+alias rm='rm -i'
+alias mv='mv -i'
+alias crontab='crontab -i'
+alias view='vim -R'
+alias vimdiff='vim -d'
+export LANG=ja_JP.UTF-8
+function _compreply_ssh(){
+  COMPREPLY=(`cat ~/.ssh/config | grep -i -e '^host' | cut -d " " -f 2 | grep -E "$2"`)
 }
 complete -F _compreply_ssh ssh
 ```
 
-Additional alias settings (WSL Ubuntu)
+追加のエイリアス設定(WSL Ubuntu)
 
 ```sh
-export SCREENDIR = $ HOME / .screen
-alias crontab ='crontab -i'
-export SCREENDIR = / home / kabukawa / .screen
+export SCREENDIR=$HOME/.screen
+alias crontab='crontab -i'
+export SCREENDIR=/home/kabukawa/.screen
 umask 022
-alias python = python3
-alias docker ='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
-eval $ (dircolors -b ~ / .dircolors)
-complete -C'/ usr / local / bin / aws_completer' aws
+alias python=python3
+alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
+eval $(dircolors -b ~/.dircolors)
+complete -C '/usr/local/bin/aws_completer' aws
 ```
 
-## ~ / .gitconfig (Windows)
 
-* For Windows, `C: \ Users \ [login user name]` is directly under the home directory (~ /)
-* Replace {username} and {email address} with your own.
+## ~/.gitconfig(Windows)
+
+* Windowsの場合は `C:\Users\[ログインユーザー名]` 直下がホームディレクトリ(~/)
+* {ユーザー名}と{メールアドレス}は自分のものに置き換えること。
 
 ```ini
 [user]
-name = {username}
-email = {email address}
-[credential "helper selector"]
+	name = {ユーザー名}
+	email = {メールアドレス}
+[credential "helperselector"]
         selected = <no helper>
 [diff]
     tool = vimdiff
@@ -396,22 +394,22 @@ email = {email address}
 [mergetool]
     prompt = false
 [difftool "sourcetree"]
-        cmd ='C: / Program Files / WinMerge / WinMergeU.exe' \ "$ LOCAL \" \ "$ REMOTE \"
+        cmd = 'C:/Program Files/WinMerge/WinMergeU.exe' \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
-        cmd ='C: /Program Files/WinMerge/WinMergeU.exe' -e -ub -fr -ar -wl -wm -dl base -dm remote -dr local $ BASE $ REMOTE $ LOCAL -o $ MERGED
+        cmd = 'C:/Program Files/WinMerge/WinMergeU.exe' -e -ub -fr -ar -wl -wm -dl base -dm remote -dr local $BASE $REMOTE $LOCAL -o $MERGED
         trustExitCode = true
 [core]
         quotepath = false
 ```
 
-## ~ / .gitconfig (Linux)
+## ~/.gitconfig(Linux)
 
-* Replace {username} and {email address} with your own.
+* {ユーザー名}と{メールアドレス}は自分のものに置き換えること。
 
 ```ini
 [user]
-        name = {username}
-        email = {email address}
+        name = {ユーザー名}
+        email = {メールアドレス}
 [diff]
         tool = vimdiff
 [difftool]
@@ -421,28 +419,29 @@ email = {email address}
 [mergetool]
         prompt = false
 ```
-## ~ / .vimrc
 
-* For Windows, `C: \ Users \ [login user name]` is directly under the home directory (~ /)
+## ~/.vimrc
+
+* Windowsの場合は `C:\Users\[ログインユーザー名]` 直下がホームディレクトリ(~/)
 
 ```vim
 colorscheme onehalfdark
 set hlsearch
-set ts = 4
+set ts=4
 set nowrap
-set bell off = all
-set laststatus = 2
-set show match
+set belloff=all
+set laststatus=2
+set showmatch
 set cursorline
-set fileformats = unix, dos, mac
-set encoding = utf-8
-set file encodings = iso-2022-jp, cp932, sjis, euc-jp, utf-8
-highlight CursorLine cterm = underline ctermfg = NONE ctermbg = NONE
-highlight CursorLine gui = underline guifg = NONE guibg = NONE
-highlight StatusLine term = none cterm = none ctermfg = black ctermbg = darkblue
+set fileformats=unix,dos,mac
+set encoding=utf-8
+set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
+highlight StatusLine term=none cterm=none ctermfg=black ctermbg=darkblue
 ```
 
-## ~ / .screenrc
+## ~/.screenrc
 
 ```sh
 defutf8 on
@@ -452,67 +451,67 @@ encoding utf8 utf8
 startup_message off
 vbell off
 
-#Color
-#If orange turns red, screen may not support 256 colors
+# 色
+# オレンジが赤になるとかならscreenが256色対応じゃないかも
 # FYI: https://qiita.com/trapple/items/8ad1b0a7c4fa5b8341b0
-# $ brew tap homebrew / dupes
+# $ brew tap homebrew/dupes
 # $ brew install screen
 defbce on
 term xterm-256color
 
 
-# Status line
-hardstatus alwayslastline "% {= cd}% -w% {= wk}% n% t *% {-}% + w% = LoadAVG [% l]"
+# ステータスライン
+hardstatus alwayslastline "%{= cd} %-w%{= wk} %n %t* %{-}%+w %= LoadAVG [%l] "
 
-# Escape key
-#escape ^ Tt
+# エスケープキー
+#escape ^Tt
 
-#Mouse scroll
-termcapinfo xterm * ti @: te @
+# マウススクロール
+termcapinfo xterm* ti@:te@
 
-# Number of scroll lines
+# スクロール行数
 defscrollback 10000
 
-#Clear buffers such as vim, less and tig at the end
+# vimとかlessとかtigとかのバッファを終了時に消す
 altscreen on
 
-#Default shell
-shell $ SHELL
+# デフォルトシェル
+shell $SHELL
 ```
 
-## ~ / .ssh / config
+## ~/.ssh/config
 
-* For Windows, `C: \ Users \ [login user name]` is directly under the home directory (~ /)
-* For Linux, change the permissions under ~ / .ssh / so that only you can read and write.
-* Replace {username} and {keyfilename} with your own.
+* Windowsの場合は `C:\Users\[ログインユーザー名]` 直下がホームディレクトリ(~/)
+* Linuxの場合は ~/.ssh/ の下は自分のみ読み書き可能なるようにパーミッションを変更する。
+* {ユーザー名}と{鍵ファイル名}は自分のものに置き換えること。
 
 ```sh
 ## develop
-Host {host name}
-  HostName {IP address}
-  User {user name}
-  IdentityFile ~ / .ssh / {key file name}
+Host {ホスト名}
+  HostName {IPアドレス}
+  User {ユーザー名}
+  IdentityFile ~/.ssh/{鍵ファイル名}
 ```
 
-* If you want to prompt the environment name after login
+* 環境名をログイン後のプロンプトに出したい場合
 
-```sh
+```
 ## develop
-Host {host name}
-  HostName {IP address}
-  User {user name}
-  IdentityFile ~ / .ssh / {key file name}
+Host {ホスト名}
+  HostName {IPアドレス}
+  User {ユーザー名}
+  IdentityFile ~/.ssh/{鍵ファイル名}
   RequestTTY yes
-  RemoteCommand PS1 = "\ [\ e [1; 32m \] [\ u @ \ h \ w] [environment name] $ \ [\ e [m \]" bash --login
+  RemoteCommand PS1="\[\e[1;32m\][\u@\h \w] [環境名] $ \[\e[m\]" bash --login
 ```
 
-## ~ / .my.cnf
+## ~/.my.cnf 
 
 ```ini
 [client]
-host = {hostname}
-user = {username}
-password = {password}
-port = 3306
-database = {schema name}
+host={ホスト名}
+user={ユーザー名}
+password={パスワード}
+port=3306
+database={スキーマ名}
 ```
