@@ -1,5 +1,6 @@
 colorscheme onehalfdark
 syntax on
+set clipboard=
 set hlsearch
 set ts=4
 set nowrap
