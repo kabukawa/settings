@@ -145,17 +145,25 @@ Settings.json で以下の項目を探して trueにする。<br>
 
 ### Visualstudio Code
 
+* [AWS Toolkit](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.aws-toolkit-vscode)
+* [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 * [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 * [Draw.io Integration](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio)
+* [Encode Decode](https://marketplace.visualstudio.com/items?itemName=mitchdenny.ecdc)
+* [Excel to Markdown table](https://marketplace.visualstudio.com/items?itemName=csholmq.excel-to-markdown-table)
 * [Excel Viewer](https://marketplace.visualstudio.com/items?itemName=GrapeCity.gc-excelviewer)
 * [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
 * [GitHub](https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-github)
 * [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
 * [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 * [Google Translate](https://marketplace.visualstudio.com/items?itemName=hancel.google-translate)
+* [Hex Editor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.hexeditor)
+* [Image preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview)
 * [Japanese Language Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-ja)
 * [Markdown PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf)
-* [PHP Debug](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug)
+* [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)
+* [Microsoft Edge Tools for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-edgedevtools.vscode-edge-devtools)
+* [Open to Other Editor Group](https://marketplace.visualstudio.com/items?itemName=shibayu36.open-to-other-editor-group)
 * [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
 * [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
     * [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
@@ -163,11 +171,7 @@ Settings.json で以下の項目を探して trueにする。<br>
     * [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
     * [Remote - SSH: Editing Configuration Files](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh-edit)
 * [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
-* [Smarty](https://marketplace.visualstudio.com/items?itemName=imperez.smarty)
-* [VSCode Map Preview](https://marketplace.visualstudio.com/items?itemName=jumpinjackie.vscode-map-preview)
-* [vscode-base64](https://marketplace.visualstudio.com/items?itemName=adamhartford.vscode-base64)
-* [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
-
+* [Vscode Google Translate](https://marketplace.visualstudio.com/items?itemName=funkyremi.vscode-google-translate)
 ### 追加設定
 
 * REST Client
