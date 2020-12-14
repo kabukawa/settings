@@ -135,13 +135,20 @@ Settings.json で以下の項目を探して trueにする。<br>
 
 ### Google Chrome
 
+* [AutoPagerize](https://chrome.google.com/webstore/detail/chrome-remote-desktop/inomeogfingihgjfjlpeplalcfajhgai)
 * [AMP Validator](https://chrome.google.com/webstore/detail/amp-validator/nmoffdblmcmgeicmolmhobpoocbbmknc)
+* [Chrome Remote Desktop](https://chrome.google.com/webstore/detail/chrome-remote-desktop/inomeogfingihgjfjlpeplalcfajhgai)
+* [cocopy](https://chrome.google.com/webstore/detail/cocopy/ihnfodlbkhgjnbheemjhkjfkfglgbdgc)
 * [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg)
+* [Google 翻訳](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
 * [LTTM](https://chrome.google.com/webstore/detail/lttm/jdidcgkdggndpodjbipodfefnpgjooeh)
 * [Link Checker](https://chrome.google.com/webstore/detail/link-checker/olcpkmmoifipcklgnphbhdhbpfniijmb)
 * [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj)
-* [Google 翻訳](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
 * [One Click Full Pageスクリーンショット](https://chrome.google.com/webstore/detail/one-click-full-page-scree/dchfhilphcokdhfmikknmgdbmklbnnle)
+* [Screenshot YouTube](https://chrome.google.com/webstore/detail/screenshot-youtube/gjoijpfmdhbjkkgnmahganhoinjjpohk)
+* [twitter画像原寸ボタン](https://chrome.google.com/webstore/detail/twitter%E7%94%BB%E5%83%8F%E5%8E%9F%E5%AF%B8%E3%83%9C%E3%82%BF%E3%83%B3/kmcomcgcopagkhcbmcmcfhpcmdolfijg)
+* [Vein: a New Social Reading Service.](https://chrome.google.com/webstore/detail/vein-a-new-social-reading/enbmoagmhglhpniadofemlmhpjhncpna)
+* [はてなブックマーク](https://chrome.google.com/webstore/detail/%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF/dnlfpnhinnjdgmjfpccajboogcjocdla)
 
 ### Visualstudio Code
 
@@ -172,14 +179,40 @@ Settings.json で以下の項目を探して trueにする。<br>
     * [Remote - SSH: Editing Configuration Files](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh-edit)
 * [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 * [Vscode Google Translate](https://marketplace.visualstudio.com/items?itemName=funkyremi.vscode-google-translate)
+
 ### 追加設定
 
-* REST Client
-デフォルトのままだと戻ってくるJSONに日本語が含まれてると文字化けするので、Settings.json で以下の項目を探して trueにする。
-(最新の「設定」画面ではチェックボックスになっているので ON にするだけでOK)
+Ctrl + ,のショートカット、もしくは File > Preferences > Settings で移動。
+
+* VS Codeの統合ターミナルをGitBashにする
+検索欄に terminal.integrated.shell.windows を打ち込み、settings.jsonで編集 で編集画面表示。以下の内容を記述する。
 
 ```json
-rest-client.decodeEscapedUnicodeCharacters = true
+"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+```
+
+* 改行コード
+検索欄に files.eol を打ち込み、ドロップダウンリストで "\n" を選択してデフォルトの改行コードをLFに変更する。
+もしくはsettings.jsonで以下の項目を記述する。
+
+```json
+"files.eol": "\n",
+```
+
+* 文字コード自動判定
+検索欄に files.autoGuessEncoding  を打ち込み、チェックボックスを ON にする。
+もしくはsettings.jsonで以下の項目を記述する。
+
+```json
+"files.autoGuessEncoding": true,
+```
+
+* REST Client
+デフォルトのままだと戻ってくるJSONに日本語が含まれてると文字化けするので、検索欄に rest-client.decodeEscapedUnicodeCharacter を打ち込み、チェックボックスを ON にする。
+もしくはsettings.jsonで以下の項目を記述する。
+
+```json
+"rest-client.decodeEscapedUnicodeCharacters": true,
 ```
 
 ---
