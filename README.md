@@ -135,13 +135,20 @@ However, sometimes the judgment fails, so in that case it is necessary to manual
 
 ### Google Chrome
 
+* [AutoPagerize](https://chrome.google.com/webstore/detail/chrome-remote-desktop/inomeogfingihgjfjlpeplalcfajhgai)
 * [AMP Validator](https://chrome.google.com/webstore/detail/amp-validator/nmoffdblmcmgeicmolmhobpoocbbmknc)
+* [Chrome Remote Desktop](https://chrome.google.com/webstore/detail/chrome-remote-desktop/inomeogfingihgjfjlpeplalcfajhgai)
+* [cocopy](https://chrome.google.com/webstore/detail/cocopy/ihnfodlbkhgjnbheemjhkjfkfglgbdgc)
 * [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg)
+* [Google translate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
+* [Hatena Bookmark](https://chrome.google.com/webstore/detail/%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF/dnlfpnhinnjdgmjfpccajboogcjocdla)
 * [LTTM](https://chrome.google.com/webstore/detail/lttm/jdidcgkdggndpodjbipodfefnpgjooeh)
 * [Link Checker](https://chrome.google.com/webstore/detail/link-checker/olcpkmmoifipcklgnphbhdhbpfniijmb)
 * [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj)
-* [Google Translate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
-* [One Click Full Page Screenshot](https://chrome.google.com/webstore/detail/one-click-full-page-scree/dchfhilphcokdhfmikknmgdbmklbnnle)
+* [One Click Full Page screenshot](https://chrome.google.com/webstore/detail/one-click-full-page-scree/dchfhilphcokdhfmikknmgdbmklbnnle)
+* [Screenshot YouTube](https://chrome.google.com/webstore/detail/screenshot-youtube/gjoijpfmdhbjkkgnmahganhoinjjpohk)
+* [twitter Image full size button](https://chrome.google.com/webstore/detail/twitter%E7%94%BB%E5%83%8F%E5%8E%9F%E5%AF%B8%E3%83%9C%E3%82%BF%E3%83%B3/kmcomcgcopagkhcbmcmcfhpcmdolfijg)
+* [Vein: a New Social Reading Service.](https://chrome.google.com/webstore/detail/vein-a-new-social-reading/enbmoagmhglhpniadofemlmhpjhncpna)
 
 ### Visualstudio Code
 
@@ -175,12 +182,37 @@ However, sometimes the judgment fails, so in that case it is necessary to manual
 
 ### Additional settings
 
-* REST Client
-If you keep the default, the returned JSON will be garbled if it contains Japanese, so find the following item in Settings.json and set it to true.<br>
-(Since it is a check box on the latest "Settings" screen, you can just turn it on.)
+Move with Ctrl +, shortcut or File> Preferences> Settings.
+
+* Make VS Code's integrated terminal Git Bash
+Type terminal.integrated.shell.windows in the search field and edit with settings.json to display the edit screen. Describe the following contents.
 
 ```json
-rest-client.decodeEscapedUnicodeCharacters = true
+"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+```
+
+* Line feed code
+Type files.eol in the search field and select "\ n" in the drop-down list to change the default line feed code to LF.
+Or describe the following items in settings.json.
+
+```json
+"files.eol": "\n",
+```
+
+* Automatic character code judgment
+Type files.autoGuessEncoding in the search field and select the check box.
+Or describe the following items in settings.json.
+
+```json
+"files.autoGuessEncoding": true,
+```
+
+* REST Client
+If you keep the default, the returned JSON will be garbled if it contains Japanese, so type rest-client.decodeEscapedUnicodeCharacter in the search field and select the check box.
+Or describe the following items in settings.json.
+
+```json
+"rest-client.decodeEscapedUnicodeCharacters": true,
 ```
 
 ---
