@@ -41,4 +41,4 @@ Mount ボタンを押すと `Host` の `Directory`で指定したパスが `Driv
 
 ### アンマウント
 
-使い終わったらunmountしておく。Kv
+使い終わったらunmountしておく。
