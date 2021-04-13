@@ -215,6 +215,14 @@ Or describe the following items in settings.json.
 "rest-client.decodeEscapedUnicodeCharacters": true,
 ```
 
+* Word separator
+Punctuation marks are considered as words, so you can use Ctrl+Alt(Opt)+F/B or Alt(Opt)←→ to jump to a punctuation mark. Type editor.wordSeparators in the search field and type "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?、。　" to override it.
+Or write the following in settings.json
+
+```json
+"editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?、。　",
+```
+
 ---
 
 ## Theme
