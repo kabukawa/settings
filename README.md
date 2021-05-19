@@ -141,7 +141,6 @@ However, sometimes the judgment fails, so in that case it is necessary to manual
 * [cocopy](https://chrome.google.com/webstore/detail/cocopy/ihnfodlbkhgjnbheemjhkjfkfglgbdgc)
 * [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg)
 * [Google translate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
-* [Hatena Bookmark](https://chrome.google.com/webstore/detail/%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF/dnlfpnhinnjdgmjfpccajboogcjocdla)
 * [LTTM](https://chrome.google.com/webstore/detail/lttm/jdidcgkdggndpodjbipodfefnpgjooeh)
 * [Link Checker](https://chrome.google.com/webstore/detail/link-checker/olcpkmmoifipcklgnphbhdhbpfniijmb)
 * [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj)
@@ -149,6 +148,7 @@ However, sometimes the judgment fails, so in that case it is necessary to manual
 * [Screenshot YouTube](https://chrome.google.com/webstore/detail/screenshot-youtube/gjoijpfmdhbjkkgnmahganhoinjjpohk)
 * [twitter Image full size button](https://chrome.google.com/webstore/detail/twitter%E7%94%BB%E5%83%8F%E5%8E%9F%E5%AF%B8%E3%83%9C%E3%82%BF%E3%83%B3/kmcomcgcopagkhcbmcmcfhpcmdolfijg)
 * [Vein: a New Social Reading Service.](https://chrome.google.com/webstore/detail/vein-a-new-social-reading/enbmoagmhglhpniadofemlmhpjhncpna)
+* [Hatena Bookmark](https://chrome.google.com/webstore/detail/%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF/dnlfpnhinnjdgmjfpccajboogcjocdla)
 
 ### Visualstudio Code
 
@@ -264,10 +264,10 @@ Create a key converted from PuTTY format to Openssh format for use with ssh comm
 
 # setting file
 
-## ~ / .bashrc
+## ~/.bashrc
 
 * For Gitbash. Below is a copy of WSL's Ubuntu.
-* For Windows, `C: \ Users \ [login user name]` is directly under the home directory (~ /)
+* For Windows, `C:\Users\[login user name]` is directly under the home directory (~/)
 
 ```sh
 # ~/.bashrc: executed by bash(1) for non-login shells.
@@ -398,11 +398,14 @@ alias mv='mv -i'
 alias crontab='crontab -i'
 alias view='vim -R'
 alias vimdiff='vim -d'
+alias curl='curl -s'
+alias ssh='ssh -o ServerAliveInterval=60'
 export LANG=ja_JP.UTF-8
 function _compreply_ssh(){
   COMPREPLY=(`cat ~/.ssh/config | grep -i -e '^host' | cut -d " " -f 2 | grep -E "$2"`)
 }
 complete -F _compreply_ssh ssh
+alias tree='tree.com' 
 ```
 
 Additional alias settings (WSL Ubuntu)
@@ -418,7 +421,7 @@ eval $(dircolors -b ~/.dircolors)
 complete -C '/usr/local/bin/aws_completer' aws
 ```
 
-## ~ / .gitconfig (Windows)
+## ~/.gitconfig (Windows)
 
 * For Windows, `C:\Users\[login user name]` is directly under the home directory (~/)
 * Replace {username} and {email address} with your own.
@@ -446,7 +449,7 @@ complete -C '/usr/local/bin/aws_completer' aws
     quotepath = false
 ```
 
-## ~ / .gitconfig (Linux)
+## ~/.gitconfig(Linux)
 
 * Replace {username} and {email address} with your own.
 
@@ -463,9 +466,10 @@ complete -C '/usr/local/bin/aws_completer' aws
 [mergetool]
     prompt = false
 ```
-## ~ / .vimrc
 
-* For Windows, `C: \ Users \ [login user name]` is directly under the home directory (~ /)
+## ~/.vimrc
+
+* For Windows, `C:\Users\[login user name]` is directly under the home directory (~ /)
 
 ```vim
 colorscheme onehalfdark
@@ -549,7 +553,7 @@ Host {host name}
   RemoteCommand PS1="\[\e[1;32m\][\u@\h \w] [environment name] $ \[\e[m\]" bash --login
 ```
 
-## ~ / .my.cnf
+## ~/.my.cnf
 
 ```ini
 [client]

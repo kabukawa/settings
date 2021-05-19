@@ -140,15 +140,15 @@ Settings.json で以下の項目を探して trueにする。<br>
 * [Chrome Remote Desktop](https://chrome.google.com/webstore/detail/chrome-remote-desktop/inomeogfingihgjfjlpeplalcfajhgai)
 * [cocopy](https://chrome.google.com/webstore/detail/cocopy/ihnfodlbkhgjnbheemjhkjfkfglgbdgc)
 * [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg)
-* [Google 翻訳](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
+* [Google translate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
 * [LTTM](https://chrome.google.com/webstore/detail/lttm/jdidcgkdggndpodjbipodfefnpgjooeh)
 * [Link Checker](https://chrome.google.com/webstore/detail/link-checker/olcpkmmoifipcklgnphbhdhbpfniijmb)
 * [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj)
-* [One Click Full Pageスクリーンショット](https://chrome.google.com/webstore/detail/one-click-full-page-scree/dchfhilphcokdhfmikknmgdbmklbnnle)
+* [One Click Full Page screenshot](https://chrome.google.com/webstore/detail/one-click-full-page-scree/dchfhilphcokdhfmikknmgdbmklbnnle)
 * [Screenshot YouTube](https://chrome.google.com/webstore/detail/screenshot-youtube/gjoijpfmdhbjkkgnmahganhoinjjpohk)
-* [twitter画像原寸ボタン](https://chrome.google.com/webstore/detail/twitter%E7%94%BB%E5%83%8F%E5%8E%9F%E5%AF%B8%E3%83%9C%E3%82%BF%E3%83%B3/kmcomcgcopagkhcbmcmcfhpcmdolfijg)
+* [twitter Image full size button](https://chrome.google.com/webstore/detail/twitter%E7%94%BB%E5%83%8F%E5%8E%9F%E5%AF%B8%E3%83%9C%E3%82%BF%E3%83%B3/kmcomcgcopagkhcbmcmcfhpcmdolfijg)
 * [Vein: a New Social Reading Service.](https://chrome.google.com/webstore/detail/vein-a-new-social-reading/enbmoagmhglhpniadofemlmhpjhncpna)
-* [はてなブックマーク](https://chrome.google.com/webstore/detail/%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF/dnlfpnhinnjdgmjfpccajboogcjocdla)
+* [Hatena Bookmark](https://chrome.google.com/webstore/detail/%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF/dnlfpnhinnjdgmjfpccajboogcjocdla)
 
 ### Visualstudio Code
 
@@ -398,11 +398,14 @@ alias mv='mv -i'
 alias crontab='crontab -i'
 alias view='vim -R'
 alias vimdiff='vim -d'
+alias curl='curl -s'
+alias ssh='ssh -o ServerAliveInterval=60'
 export LANG=ja_JP.UTF-8
 function _compreply_ssh(){
   COMPREPLY=(`cat ~/.ssh/config | grep -i -e '^host' | cut -d " " -f 2 | grep -E "$2"`)
 }
 complete -F _compreply_ssh ssh
+alias tree='tree.com' 
 ```
 
 追加のエイリアス設定(WSL Ubuntu)
@@ -417,7 +420,6 @@ alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
 eval $(dircolors -b ~/.dircolors)
 complete -C '/usr/local/bin/aws_completer' aws
 ```
-
 
 ## ~/.gitconfig(Windows)
 
