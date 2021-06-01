@@ -223,6 +223,15 @@ Or write the following in settings.json
 "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?、。　",
 ```
 
+* Background color of the active editing tab
+The default is hard to see, so change it. Type "workbench.colorCustomizations" in the search field and write the following items in settings.json.
+
+```json
+    "workbench.colorCustomizations": {
+        "tab.activeBackground": "#0184bc"
+    },
+```
+
 ---
 
 ## Theme

@@ -217,10 +217,19 @@ Ctrl + ,のショートカット、もしくは File > Preferences > Settings �
 
 * 単語区切り
 句読点を単語と見做してくれるので、Ctrl+Alt(Opt)+F/B やAlt(Opt)←→で句読点までジャンプできる。検索欄に editor.wordSeparators を打ち込み、"`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?、。　" を上書きする。
-もしくはsettings.jsonで以下の項目を記述する
+もしくはsettings.jsonで以下の項目を記述する。
 
 ```json
 "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?、。　",
+```
+
+* アクティブな編集タブの背景色
+デフォルトだと見づらいので、変更する。検索欄に workbench.colorCustomizations を打ち込み、settings.jsonで以下の項目を記述する。
+
+```json
+    "workbench.colorCustomizations": {
+        "tab.activeBackground": "#0184bc"
+    },
 ```
 
 ---
