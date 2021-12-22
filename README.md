@@ -464,12 +464,46 @@ alias view='vim -R'
 alias vimdiff='vim -d'
 alias curl='curl -s'
 alias ssh='ssh -o ServerAliveInterval=60'
+alias jq='jq -C'
+
 export LANG=ja_JP.UTF-8
+source ~/.bash_completion.d/kubectl
+source ~/.azure/az.completion
+export MSYS=winsymlinks:nativestrict
+
 function _compreply_ssh(){
   COMPREPLY=(`cat ~/.ssh/config | grep -i -e '^host' | cut -d " " -f 2 | grep -E "$2"`)
 }
 complete -F _compreply_ssh ssh
 alias tree='tree.com' 
+function s2u ()
+{
+  iconv -f CP932 -t UTF-8 | tr -d '\r'
+}
+function u2s ()
+{
+  iconv -f UTF-8 -t CP932
+}
+function u2l ()
+{
+  date --date "@$1" +"%Y-%m-%d %H:%M:%S"
+}
+function l2u ()
+{
+  date +%s --date "$*"
+}
+function 2lf ()
+{
+  tr -d "\r"
+}
+peco_search_history() {
+	local l=$(HISTTIMEFORMAT= history | \
+	sort -r | sed -E s/^\ *[0-9]\+\ \+// | \
+	peco --query "$READLINE_LINE")
+	READLINE_LINE="$l"
+	READLINE_POINT=${#l}
+}
+bind -x '"\C-r": peco_search_history'
 ```
 
 Additional alias settings (WSL Ubuntu)
