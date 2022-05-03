@@ -25,11 +25,13 @@
 
 * [A5SQL Mk2](https://a5m2.mmatsubara.com/)
 * [MySQL Workbench](https://www.mysql.com/jp/products/workbench/)
+* [Data Grip](https://www.jetbrains.com/ja-jp/datagrip/)
 
 ### 統合開発環境
 
 * [PHP Storm](https://www.jetbrains.com/ja-jp/phpstorm/)
 * [Eclipse PHP Development Tools](https://www.eclipse.org/pdt/)
+* [RubyMine](https://www.jetbrains.com/ja-jp/ruby/)
 
 ### Git
 
@@ -141,10 +143,14 @@ Settings.json で以下の項目を探して trueにする。<br>
 * [cocopy](https://chrome.google.com/webstore/detail/cocopy/ihnfodlbkhgjnbheemjhkjfkfglgbdgc)
 * [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg)
 * [Google translate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
+* [e-Tax AP](https://chrome.google.com/webstore/detail/e-tax-ap/hopiajgbpnepghlkfmdonpgdnmcajpeb)
 * [Improve YouTube! (Video & YouTube Tools)🎧](https://chrome.google.com/webstore/detail/improve-youtube-video-you/bnomihfieiccainjcjblhegjgglakjdd)
 * [GoFullPage - Full Page Screen Capture](https://chrome.google.com/webstore/detail/gofullpage-full-page-scre/fdpohaocaechififmbbbbbknoalclacl)
 * [Google Mail Checker](https://chrome.google.com/webstore/detail/google-mail-checker/mihcahmgecmbnbcchbopgniflfhgnkff)
 * [Google Offline Document](https://chrome.google.com/webstore/detail/google-docs-offline/ghbmnnjooekpmoecnnnilnnbdlolhkhi)
+* [Google Transrate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
+* [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
+* [LINE](https://chrome.google.com/webstore/detail/line/ophjlpahpchlmihnnnihgmmeilfjmjjc)
 * [LTTM](https://chrome.google.com/webstore/detail/lttm/jdidcgkdggndpodjbipodfefnpgjooeh)
 * [Pegmatite](https://chrome.google.com/webstore/detail/pegmatite/jegkfbnfbfnohncpcfcimepibmhlkldo)
 * [Picture-in-Picture Extension (by Google)](https://chrome.google.com/webstore/detail/picture-in-picture-extens/hkgfoiooedgoejojocmhlaklaeopbecg)
@@ -152,6 +158,7 @@ Settings.json で以下の項目を探して trueにする。<br>
 * [Screenshot YouTube](https://chrome.google.com/webstore/detail/screenshot-youtube/gjoijpfmdhbjkkgnmahganhoinjjpohk)
 * [twitter Image full size button](https://chrome.google.com/webstore/detail/twitter%E7%94%BB%E5%83%8F%E5%8E%9F%E5%AF%B8%E3%83%9C%E3%82%BF%E3%83%B3/kmcomcgcopagkhcbmcmcfhpcmdolfijg)
 * [Vein: a New Social Reading Service.](https://chrome.google.com/webstore/detail/vein-a-new-social-reading/enbmoagmhglhpniadofemlmhpjhncpna)
+* [ZenHub for GitHub](https://chrome.google.com/webstore/detail/zenhub-for-github/ogcgkffhplmphkaahpmffcafajaocjbd)
 * [Hatena Bookmark](https://chrome.google.com/webstore/detail/%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF/dnlfpnhinnjdgmjfpccajboogcjocdla)
 * [Application Launcher for Drive (Google)](https://chrome.google.com/webstore/detail/application-launcher-for/lmjegmlicamnimmfhcmpkclmigmmcbeh)
 
@@ -188,9 +195,15 @@ Settings.json で以下の項目を探して trueにする。<br>
 * [Azure Kubernetes Service](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-aks-tools)
 * [Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)
 * [Azure Machine Learning - Remote](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai-remote)
+* [Better Haml](https://marketplace.visualstudio.com/items?itemName=karunamurti.haml)
+* [Bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)
+* [Bridge to Kubernetes](https://marketplace.visualstudio.com/items?itemName=mindaro.mindaro)
 * [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
-* [Debugger for Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
 * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+* [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)
+* [Debugger for Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
+* [Dependency Analytics](https://marketplace.visualstudio.com/items?itemName=redhat.fabric8-analytics)
+* [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 * [Draw.io Integration](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio)
 * [Encode Decode](https://marketplace.visualstudio.com/items?itemName=mitchdenny.ecdc)
 * [Excel to Markdown table](https://marketplace.visualstudio.com/items?itemName=csholmq.excel-to-markdown-table)
@@ -199,24 +212,37 @@ Settings.json で以下の項目を探して trueにする。<br>
 * [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
 * [GitHub](https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-github)
 * [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+* [GitHub Copilot Labs](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-labs)
 * [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
 * [GitHub Repositories](https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub)
 * [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-* [Google Translate](https://marketplace.visualstudio.com/items?itemName=hancel.google-translate)
+* [GlassIt-VSC](https://marketplace.visualstudio.com/items?itemName=s-nlf-fh.glassit)
 * [Hasher](https://marketplace.visualstudio.com/items?itemName=deerawan.vscode-hasher)
 * [Hex Editor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.hexeditor)
 * [Image preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview)
+* [IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 * [Japanese Language Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-ja)
 * [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
 * [Jupyter Keymap](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-keymap)
 * [Jupyter Notebook Renderers](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter-renderers)
 * [Kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools)
+* [Language Support for Java(TM) by Red Hat](https://marketplace.visualstudio.com/items?itemName=redhat.java)
 * [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass)
 * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+* [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)
+* [Live Share Audio](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-audio)
+* [Live Share Extension Pack](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack)
 * [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced)
+* [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
+* [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
 * [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+* [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)
+* [MongoDB for VS Code](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode)
 * [Open to Other Editor Group](https://marketplace.visualstudio.com/items?itemName=shibayu36.open-to-other-editor-group)
 * [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
+* [Power Mode](https://marketplace.visualstudio.com/items?itemName=hoovercj.vscode-power-mode)
+* [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+* [Project Manager for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency)
 * [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 * [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
@@ -224,11 +250,14 @@ Settings.json で以下の項目を探して trueにする。<br>
     * [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
     * [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
     * [Remote - SSH: Editing Configuration Files](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh-edit)
+* [Remote Repositories](https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-repositories)
+* [REST Book](https://marketplace.visualstudio.com/items?itemName=tanhakabir.rest-book)
 * [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 * [SCSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-scss)
 * [SQLite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
+* [Swagger Viewer](https://marketplace.visualstudio.com/items?itemName=Arjun.swagger-viewer)
+* [Test Runner for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test)
 * [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
-* [Vscode Google Translate](https://marketplace.visualstudio.com/items?itemName=funkyremi.vscode-google-translate)
 * [VSCode Ruby](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby)
 * [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 * [vscode-reveal](https://marketplace.visualstudio.com/items?itemName=evilz.vscode-reveal)
@@ -495,6 +524,11 @@ function 2lf ()
 {
   tr -d "\r"
 }
+function gip ()
+{
+  curl ifconfig.io -4
+  curl ifconfig.io -6
+}
 peco_search_history() {
 	local l=$(HISTTIMEFORMAT= history | \
 	sort -r | sed -E s/^\ *[0-9]\+\ \+// | \
@@ -503,6 +537,12 @@ peco_search_history() {
 	READLINE_POINT=${#l}
 }
 bind -x '"\C-r": peco_search_history'
+toppod() {
+  kubectl top pod --use-protocol-buffers --no-headers | \
+                  sort -k3 -n -r | \
+                  head -n 10
+}
+complete -C '/c/Program\ Files/Amazon/AWSCLIV2/aws_completer' aws
 ```
 
 追加のエイリアス設定(WSL Ubuntu)
@@ -513,7 +553,6 @@ alias crontab='crontab -i'
 export SCREENDIR=/home/kabukawa/.screen
 umask 022
 alias python=python3
-alias docker='/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe'
 eval $(dircolors -b ~/.dircolors)
 complete -C '/usr/local/bin/aws_completer' aws
 ```
