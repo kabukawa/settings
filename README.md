@@ -493,17 +493,33 @@ alias vimdiff='vim -d'
 alias curl='curl -s'
 alias ssh='ssh -o ServerAliveInterval=60'
 alias jq='jq -C'
+alias cdh='cd ~/Documents'
+alias cdd='cd ~/Downloads'
+alias dev='cd ~/Documents/dev'
+alias nostat="egrep -v '/api/(status|doc)'"
+alias kubelog="kubectl stern -t "
+alias stern="kubectl-stern --timestamps "
+alias aws_completer='/c/Program\ Files/Amazon/AWSCLIV2/aws_completer | 2lf'
+alias mongo="mongosh"
 
 export LANG=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
 source ~/.bash_completion.d/kubectl
 source ~/.azure/az.completion
 export MSYS=winsymlinks:nativestrict
+
+HISTSIZE=1000
+HISTFILESIZE=3000
 
 function _compreply_ssh(){
   COMPREPLY=(`cat ~/.ssh/config | grep -i -e '^host' | cut -d " " -f 2 | grep -E "$2"`)
 }
 complete -F _compreply_ssh ssh
-alias tree='tree.com' 
+function _compreply_awsmfa(){
+  COMPREPLY=(`cat ~/.aws/config | grep -i -e '^\[' | sed -e 's/\[//g' -e 's/\]//g' | cut -d " " -f 2 | grep -E "$2"`)
+}
+complete -F _compreply_awsmfa aws-mfa
+
 function s2u ()
 {
   iconv -f CP932 -t UTF-8 | tr -d '\r'
@@ -542,7 +558,32 @@ toppod() {
                   sort -k3 -n -r | \
                   head -n 10
 }
-complete -C '/c/Program\ Files/Amazon/AWSCLIV2/aws_completer' aws
+function ks() {
+  kcontext=$(kubectl config get-contexts  | peco --initial-index=1 --prompt='kubectl config use-context > ' |  sed -e 's/^\*//' | awk '{print $1}')
+  if [ -n "$kcontext" ]; then
+    clear
+    kubectl config use-context $kcontext
+  fi
+}
+function sql() {
+  mcontext=$(ls -a  ~/.mysql/.mysql.* | sed -e 's/.*\///g' | peco --initial-index=0 --prompt='mysql > ' |  awk '{print $1}')
+  if [ -n "mcontext" ]; then
+    clear
+    mysql --defaults-file=~/.mysql/$mcontext
+  fi
+}
+function vpn() {
+  vcontext=$(ls -a  ~/.vpn/* | sed -e 's/.*\///g' | peco --initial-index=0 --prompt='vpn > ' |  awk '{print $1}')
+  if [ -n "vcontext" ]; then
+    clear
+    rasdial `cat ~/.vpn/$vcontext`
+  fi
+}
+function awsssm(){
+  SSM_TARGET_HOST="$(aws ec2 describe-instances  --profile scb-dev | jq -r '.Reservations[].Instances[].InstanceId'|peco)"
+  aws ssm start-session --profile scb-dev --target ${SSM_TARGET_HOST}
+}
+complete -C aws_completer aws
 ```
 
 Additional alias settings (WSL Ubuntu)
