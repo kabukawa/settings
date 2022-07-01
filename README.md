@@ -421,9 +421,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][GitBash] \u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}[GitBash] \u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -488,8 +488,8 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias mv='mv -i'
 alias crontab='crontab -i'
-alias view='vim -R'
 alias vimdiff='vim -d'
+alias view='vim -R'
 alias curl='curl -s'
 alias ssh='ssh -o ServerAliveInterval=60'
 alias jq='jq -C'
@@ -501,10 +501,16 @@ alias kubelog="kubectl stern -t "
 alias stern="kubectl-stern --timestamps "
 alias aws_completer='/c/Program\ Files/Amazon/AWSCLIV2/aws_completer | 2lf'
 alias mongo="mongosh"
+alias kp="kubectl get pods"
+alias kd="kubectl get deploy"
+alias kt="kubectl top pods"
+alias awsmfa='aws-mfa --profile '
+alias rehash='. ~/.bashrc'
 
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
-source ~/.bash_completion.d/kubectl
+export GOPATH=/home/kabukawa/go
+#source ~/.bash_completion.d/kubectl
 source ~/.azure/az.completion
 export MSYS=winsymlinks:nativestrict
 
@@ -515,11 +521,6 @@ function _compreply_ssh(){
   COMPREPLY=(`cat ~/.ssh/config | grep -i -e '^host' | cut -d " " -f 2 | grep -E "$2"`)
 }
 complete -F _compreply_ssh ssh
-function _compreply_awsmfa(){
-  COMPREPLY=(`cat ~/.aws/config | grep -i -e '^\[' | sed -e 's/\[//g' -e 's/\]//g' | cut -d " " -f 2 | grep -E "$2"`)
-}
-complete -F _compreply_awsmfa aws-mfa
-
 function s2u ()
 {
   iconv -f CP932 -t UTF-8 | tr -d '\r'
@@ -545,45 +546,158 @@ function gip ()
   curl ifconfig.io -4
   curl ifconfig.io -6
 }
+#alias tree='tree.com'
 peco_search_history() {
-	local l=$(HISTTIMEFORMAT= history | \
-	sort -r | sed -E s/^\ *[0-9]\+\ \+// | \
-	peco --query "$READLINE_LINE")
-	READLINE_LINE="$l"
-	READLINE_POINT=${#l}
+  local l=$(HISTTIMEFORMAT= history | \
+  sort -r | sed -E s/^\ *[0-9]\+\ \+// | \
+  peco --query "$READLINE_LINE")
+  READLINE_LINE="$l"
+  READLINE_POINT=${#l}
 }
 bind -x '"\C-r": peco_search_history'
+peco_cdr() {
+  local l=$(CWDHISTORY= dirs -v | \
+  sort -r | sed -E s/^\ *[0-9]\+\ \+// | \
+  peco --query "$READLINE_LINE")
+  READLINE_LINE="$l"
+  READLINE_POINT=${#l}
+  cd "$l"
+}
+alias cdr=peco_cdr
 toppod() {
   kubectl top pod --use-protocol-buffers --no-headers | \
-                  sort -k3 -n -r | \
-                  head -n 10
+		  sort -k3 -n -r | \
+		  head -n 10
 }
 function ks() {
-  kcontext=$(kubectl config get-contexts  | peco --initial-index=1 --prompt='kubectl config use-context > ' |  sed -e 's/^\*//' | awk '{print $1}')
+  kcontext=$(kubectl config get-contexts  | \
+		  peco --initial-index=1 --prompt='kubectl config use-context > ' |  
+		  sed -e 's/^\*//' | awk '{print $1}')
+  clear
   if [ -n "$kcontext" ]; then
-    clear
     kubectl config use-context $kcontext
   fi
 }
+function distlogin() {
+  dcontext=$(wsl --list --quiet | s2u  | \
+		  peco --initial-index=0 --prompt='Distribution > ' |  
+		  awk '{print $1}')
+  clear
+  if [ -n "$dcontext" ]; then
+    wsl --distribution $dcontext --cd "~"
+  fi
+}
+function ass() {
+	local SUBSCRIPTIONS=`cat ~/.azure_subscriptions`
+	acontext=$(echo "${SUBSCRIPTIONS}" | peco --initial-index=1 --prompt='Subscriptuon > ' )
+	clear
+	if [ -n "$acontext" ]; then
+      az account set -s "$acontext"
+	fi
+}
+function pod-restart() {
+  local DEPLOYLIST=`kubectl get deploy`
+  rcontext=$(echo "${DEPLOYLIST}" | \
+		  peco --initial-index=1 --prompt='kubectl get pods > ' | \
+		  awk '{print $1}')
+  clear
+  if [ -n "$rcontext" ]; then
+    kubectl rollout restart deployment/$rcontext
+  fi
+}
 function sql() {
-  mcontext=$(ls -a  ~/.mysql/.mysql.* | sed -e 's/.*\///g' | peco --initial-index=0 --prompt='mysql > ' |  awk '{print $1}')
-  if [ -n "mcontext" ]; then
-    clear
+  mcontext=$(ls ~/.mysql/mysql.* | \
+		  sed -e 's/.*\///g' | \
+		  peco --initial-index=0 --prompt='mysql > ' | \
+		  awk '{print $1}')
+  clear
+  if [ -n "$mcontext" ]; then
     mysql --defaults-file=~/.mysql/$mcontext
   fi
 }
 function vpn() {
-  vcontext=$(ls -a  ~/.vpn/* | sed -e 's/.*\///g' | peco --initial-index=0 --prompt='vpn > ' |  awk '{print $1}')
-  if [ -n "vcontext" ]; then
-    clear
-    rasdial `cat ~/.vpn/$vcontext`
+  vcontext=$(ls -a  ~/.vpn/* | \
+		  sed -e 's/.*\///g' | \
+		  peco --initial-index=0 --prompt='vpn > ' | \
+		  awk '{print $1}')
+  clear
+  if [ -n "$vcontext" ]; then
+	rasdial `cat ~/.vpn/$vcontext` | egrep -v '(コマンドは正常に|Binary file)'
   fi
 }
-function awsssm(){
-  SSM_TARGET_HOST="$(aws ec2 describe-instances  --profile scb-dev | jq -r '.Reservations[].Instances[].InstanceId'|peco)"
-  aws ssm start-session --profile scb-dev --target ${SSM_TARGET_HOST}
+function mg() {
+  gcontext=$(ls -a  ~/.mongo/* | \
+		  sed -e 's/.*\///g' | \
+		  peco --initial-index=0 --prompt='mongo > ' | \
+		  awk '{print $1}')
+  clear
+  if [ -n "$gcontext" ]; then
+	mongo `cat ~/.mongo/$gcontext`
+  fi
 }
+function _compreply_awsprofile(){
+  COMPREPLY=(`cat ~/.aws/config | \
+		  grep -i -e '^\[' | \
+		  sed -e 's/\[//g' -e 's/\]//g' | \
+		  cut -d " " -f 2 | grep -E "$2"`)
+}
+complete -F _compreply_awsprofile awsmfa
+function awsssm(){
+  local INSTANCES=`awsec2 ${1}`
+  SSM_TARGET_HOST=$(echo "${INSTANCES}" | \
+		  peco --initial-index=0 --prompt='ssm > ' | \
+		  awk '{print $1}')
+  if [ -n "${SSM_TARGET_HOST}" ]; then
+    aws ssm start-session --profile ${1} --target ${SSM_TARGET_HOST}
+  fi
+}
+complete -F _compreply_awsprofile awsssm
+function awspfrds(){
+  local INSTANCES=`awsec2 ${1}`
+  SSM_TARGET_HOST=$(echo "${INSTANCES}" | \
+		  peco --initial-index=0 --prompt='ssm > ' | \
+		  awk '{print $1}')
+  local DBINSTANCES=`awsrds ${1}`
+  RDS_TARGET_HOST=$(echo "${DBINSTANCES}" | \
+		  peco --initial-index=0 --prompt='ssm > ' | \
+		  awk '{print $1}')
+  if [ -n "${SSM_TARGET_HOST}" ]; then
+    aws ssm start-session --profile ${1} --target ${SSM_TARGET_HOST} \
+          --document-name AWS-StartPortForwardingSessionToRemoteHost \
+		  --parameters "{\"host\":[\"${RDS_TARGET_HOST}\"],\"portNumber\":[\"3306\"], \"localPortNumber\":[\"3306\"]}"
+  fi
+}
+complete -F _compreply_awsprofile awspfrds
+function awsec2 () {
+  aws ec2 describe-instances \
+  --profile ${1} \
+  --query 'Reservations[].Instances[].{ID:InstanceId, Name:Tags[?Key==`Name`] | [0].Value, State:State.Name}' \
+  --output text | column -t
+}
+complete -F _compreply_awsprofile awsec2
+function awsrds () {
+  aws rds describe-db-instances \
+  --profile ${1} \
+  --query 'DBInstances[].{ID:DBInstanceIdentifier, Class:DBInstanceClass, Address:Endpoint.Address, Name:TagList[?Key==`Name`] | [0].Value, State:DBInstanceStatus}' \
+  --output text | column -t
+}
+complete -F _compreply_awsprofile awsrds
+function awssecrets () {
+  for NAME in `aws secretsmanager list-secrets \
+		  --profile ${1} \
+		  --query "SecretList[].Name" \
+		  --output text | 2lf`; 
+  do
+    echo ${NAME}
+	aws secretsmanager get-secret-value \
+			--profile ${1} \
+			--secret-id ${NAME} | \
+			jq -r ".SecretString" | jq ; 
+  done
+}
+complete -F _compreply_awsprofile awssecrets
 complete -C aws_completer aws
+source <(kubectl completion bash)
 ```
 
 Additional alias settings (WSL Ubuntu)
