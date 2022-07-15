@@ -1,0 +1,91 @@
+{
+  // これは、サポートされているAceのテーマのいずれかでなければなりません。
+  // Theme-*.jsはこちらから探してください：
+  // https://github.com/ajaxorg/ace-builds/tree/master/src-noconflict
+  "defaultTheme": "tomorrow_night_eighties",
+  
+  // dark, twilight, or light
+  "uiTheme": "twilight",
+  // カーソルを合わせるまで、プロジェクトビューを折りたたむことができます。
+  "autoHideProject": false,
+  // Chrome OSのフルスクリーンモードでメニュー/タブを隠す
+  "immersiveFullscreen": false,
+  "highlightLine": true,
+  // 行番号を表示しない場合は、trueを設定します。
+  "hideGutter": true,
+  
+  // エディタオプション
+  // 空白文字（スペース、タブ、リターン）の表示
+  "showWhitespace": false,
+  "showMargin": true,
+  // エディタがドキュメントの最後までスクロールできるようにする
+  "scrollPastEnd": true,
+  // 保存時に "Trim Trailing Whitespace "を実行する
+  "trimTrailingWhitespace": true,
+  // trim whitespaceコマンドは、空の行も切り詰めるべきか？
+  "trimEmptyLines": false,
+
+  // 構文オプション
+  // インデントサイズ
+  "indentation": 4,
+  // AceのsetUseSoftTabs()オプションをオフにし、代わりにタブ文字を使用します。
+  "useTabs": true,
+  // wordWrapを有効にするか
+  "wordWrap": false,
+  // 必要な文字数に設定するか、フルウィンドウの場合はfalse
+  "wrapLimit": false,
+  // 改行形式 - "windows"、"unix"、または "auto"
+  "lineEndings": "unix",
+
+  // 今のところ、固定幅のフォントのみサポート
+  "fontFamily": "UDEV Gothic",
+  "fontSize": 15,
+  "lineHeight": 1.3,
+
+  // Web workersは、PHP、JavaScript、JSONのコードヒンティングに使用されます。
+  // workerのオプションを設定する方法はまだありませんが、これを無効にすることができます。
+  "useWorker": true,
+  // Ctrl-Spaceでオートコンプリートが起動するように
+  "autocomplete": true,
+  // オートコンプリートが自動的にトリガーされる
+  "autocompleteLive": false,
+  // "Behaviors"とは、エディタの自動ペアリングされた引用符やHTMLタグのことです
+  "disableBehaviors": false,
+
+  // デフォルトでは、パレットは、範囲を広げない限り、現在のファイルのテキストのみを検索します。
+  // デフォルトで開いているすべてのファイルを検索するようにしたい場合は、このオプションをtrueに設定します。
+  "searchAllFiles": false,
+  // プロジェクト・ワイド・サーチが返す検索結果の最大値を設定します。
+  "maxSearchMatches": 500,
+
+  // プロジェクトビュー/検索で無視する正規表現の設定
+  "ignoreFiles": "node_modules",
+  // デフォルトでは、Careetはプロジェクトビューに隠しフォルダ（例：.git）を表示しません。
+  "showHiddenDirectories": false,
+  // これを設定すると、X分ごとの自動保存が有効になります。
+  "autosaveInterval": 0,
+  "autosaveOnBlur": false,
+  // フォーカス変更時にエディタがトップにジャンプする場合は、これを設定します。
+  "disableReload": false,
+  // エディタが最後に開いていたタブのセットを復元しないように設定する
+  "disableTabRestore": true,
+
+  // 起動時のアップデートチェックを無効にしたい場合は、以下のように変更します。
+  "promptForUpdates": true,
+  // オプションは、"background"、"launch"、"silent "です。
+  "updateNotifications": "background",
+
+
+  // ワイルドでエキセントリック？Vimのキーバインドが好きかもしれません。
+  "emulateVim": false,
+  
+  // jsHintの設定は、JSファイルを開く際に適用されます。変更を有効にするには、Caretの再起動が必要になる場合があります。
+  "jsHint": {},
+
+  // ここでは、構文オプションを設定できます。まだすべてのオプションがサポートされているわけではありません。
+  "syntaxSpecific": {
+    "python": {
+      "indentation": 4
+    }
+  }
+}
