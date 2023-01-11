@@ -496,19 +496,28 @@ alias jq='jq -C'
 alias cdh='cd ~/Documents'
 alias cdd='cd ~/Downloads'
 alias dev='cd ~/Documents/dev'
-alias nostat="egrep -v '/api/(status|doc)'"
+alias nostat="egrep -v '/(api/(status|doc)|bootstrap|jquery|ui|signin|public|health_check|HealthCheck::)'"
 alias kubelog="kubectl stern -t "
 alias stern="kubectl-stern --timestamps "
 alias aws_completer='/c/Program\ Files/Amazon/AWSCLIV2/aws_completer | 2lf'
 alias mongo="mongosh"
-alias kp="kubectl get pods"
-alias kd="kubectl get deploy"
-alias kt="kubectl top pods"
+#alias kp="kubectl get pods | s2u | 2lf"
+#alias kd="kubectl get deploy | s2u | 2lf"
+alias kt="kubectl top pods --sort-by=cpu | s2u | 2lf"
+alias kcc="kubectl config current-context | s2u | 2lf"
+alias tenki="curl https://wttr.in/Chiba"
 alias awsmfa='aws-mfa --profile '
 alias rehash='. ~/.bashrc'
 
-export LANG=ja_JP.UTF-8
-export LC_CTYPE=ja_JP.UTF-8
+export LC_ALL=ja_JP.utf8
+export LANG=ja_JP.utf8
+export LANGUAGE=ja_JP.utf8
+export LC_CTYPE="ja_JP.utf8"
+export LC_NUMERIC="ja_JP.utf8"
+export LC_TIME="ja_JP.utf8"
+export LC_COLLATE="ja_JP.utf8"
+export LC_MONETARY="ja_JP.utf8"
+export LC_MESSAGES="ja_JP.utf8"
 export GOPATH=/home/kabukawa/go
 #source ~/.bash_completion.d/kubectl
 source ~/.azure/az.completion
@@ -517,7 +526,8 @@ export MSYS=winsymlinks:nativestrict
 HISTSIZE=1000
 HISTFILESIZE=3000
 
-function _compreply_ssh(){
+function _compreply_ssh()
+{
   COMPREPLY=(`cat ~/.ssh/config | grep -i -e '^host' | cut -d " " -f 2 | grep -E "$2"`)
 }
 complete -F _compreply_ssh ssh
@@ -541,13 +551,22 @@ function 2lf ()
 {
   tr -d "\r"
 }
+function utc2jst ()
+{ 
+  date -d "${1} UTC" "+%Y/%m/%d %H:%M:%S"
+}
+function jst2utc ()
+{ 
+  TZ=UTC date -d "${1} JST"  "+%Y/%m/%d %H:%M:%S"
+}
 function gip ()
 {
   curl ifconfig.io -4
   curl ifconfig.io -6
 }
 #alias tree='tree.com'
-peco_search_history() {
+peco_search_history() 
+{
   local l=$(HISTTIMEFORMAT= history | \
   sort -r | sed -E s/^\ *[0-9]\+\ \+// | \
   peco --query "$READLINE_LINE")
@@ -555,7 +574,8 @@ peco_search_history() {
   READLINE_POINT=${#l}
 }
 bind -x '"\C-r": peco_search_history'
-peco_cdr() {
+peco_cdr() 
+{
   local l=$(CWDHISTORY= dirs -v | \
   sort -r | sed -E s/^\ *[0-9]\+\ \+// | \
   peco --query "$READLINE_LINE")
@@ -564,38 +584,73 @@ peco_cdr() {
   cd "$l"
 }
 alias cdr=peco_cdr
-toppod() {
-  kubectl top pod --use-protocol-buffers --no-headers | \
+toppod() 
+{
+  kubectl top pod --use-protocol-buffers --no-headers | s2u | 2lf | \
 		  sort -k3 -n -r | \
 		  head -n 10
 }
-function ks() {
-  kcontext=$(kubectl config get-contexts  | \
-		  peco --initial-index=1 --prompt='kubectl config use-context > ' |  
+function ks() 
+{
+  kcontext=$(kubectl config get-contexts | s2u | 2lf | \
+		  peco --initial-index=1 --prompt='kubectl config use-context > ' | \
 		  sed -e 's/^\*//' | awk '{print $1}')
   clear
   if [ -n "$kcontext" ]; then
     kubectl config use-context $kcontext
+  else
+    kcc
   fi
 }
-function distlogin() {
+function kp() 
+{
+  if [ -n "$1" ]; then
+    kubectl get pods | s2u | 2lf | grep $1
+  else
+    kubectl get pods | s2u | 2lf
+  fi
+}
+function kd() 
+{
+  if [ -n "$1" ]; then
+    kubectl get deploy | s2u | 2lf | grep $1
+  else
+    kubectl get deploy | s2u | 2lf
+  fi
+}
+function klogin ()
+{
+  klogin=$(kp | peco --initial-index=1 --prompt='pod login > ' | \
+		  awk '{print $1}')
+  clear
+  if [ -n "$klogin" ]; then
+    kubectl exec -it $klogin -- //bin/bash
+  fi
+}
+function distlogin() 
+{
   dcontext=$(wsl --list --quiet | s2u  | \
-		  peco --initial-index=0 --prompt='Distribution > ' |  
+		  peco --initial-index=0 --prompt='Distribution > ' | \
 		  awk '{print $1}')
   clear
   if [ -n "$dcontext" ]; then
     wsl --distribution $dcontext --cd "~"
   fi
 }
-function ass() {
-	local SUBSCRIPTIONS=`cat ~/.azure_subscriptions`
-	acontext=$(echo "${SUBSCRIPTIONS}" | peco --initial-index=1 --prompt='Subscriptuon > ' )
+function ass() 
+{
+	acontext=$(az account list --query \
+			'[?tenantId==`754dd7c9-3d26-46fc-a8cc-91e046d26e1d`].[id, name]' -o tsv | \
+			s2u | sed -e 's/スポンサー プラン/Sponsor Plans/g' | \
+			peco --initial-index=0 --prompt='Subscriptuon > ' | awk '{print $1}')
 	clear
 	if [ -n "$acontext" ]; then
       az account set -s "$acontext"
 	fi
+	az account show --query "name" -o tsv
 }
-function pod-restart() {
+function pod-restart() 
+{
   local DEPLOYLIST=`kubectl get deploy`
   rcontext=$(echo "${DEPLOYLIST}" | \
 		  peco --initial-index=1 --prompt='kubectl get pods > ' | \
@@ -605,8 +660,9 @@ function pod-restart() {
     kubectl rollout restart deployment/$rcontext
   fi
 }
-function sql() {
-  mcontext=$(ls ~/.mysql/mysql.* | \
+function sql() 
+{
+  mcontext=$(ls ~/.mysql/* | \
 		  sed -e 's/.*\///g' | \
 		  peco --initial-index=0 --prompt='mysql > ' | \
 		  awk '{print $1}')
@@ -615,7 +671,8 @@ function sql() {
     mysql --defaults-file=~/.mysql/$mcontext
   fi
 }
-function vpn() {
+function vpn() 
+{
   vcontext=$(ls -a  ~/.vpn/* | \
 		  sed -e 's/.*\///g' | \
 		  peco --initial-index=0 --prompt='vpn > ' | \
@@ -625,7 +682,8 @@ function vpn() {
 	rasdial `cat ~/.vpn/$vcontext` | egrep -v '(コマンドは正常に|Binary file)'
   fi
 }
-function mg() {
+function mg() 
+{
   gcontext=$(ls -a  ~/.mongo/* | \
 		  sed -e 's/.*\///g' | \
 		  peco --initial-index=0 --prompt='mongo > ' | \
@@ -635,14 +693,16 @@ function mg() {
 	mongo `cat ~/.mongo/$gcontext`
   fi
 }
-function _compreply_awsprofile(){
+function _compreply_awsprofile()
+{
   COMPREPLY=(`cat ~/.aws/config | \
 		  grep -i -e '^\[' | \
 		  sed -e 's/\[//g' -e 's/\]//g' | \
 		  cut -d " " -f 2 | grep -E "$2"`)
 }
 complete -F _compreply_awsprofile awsmfa
-function awsssm(){
+function awsssm()
+{
   local INSTANCES=`awsec2 ${1}`
   SSM_TARGET_HOST=$(echo "${INSTANCES}" | \
 		  peco --initial-index=0 --prompt='ssm > ' | \
@@ -652,7 +712,8 @@ function awsssm(){
   fi
 }
 complete -F _compreply_awsprofile awsssm
-function awspfrds(){
+function awspfrds()
+{
   local INSTANCES=`awsec2 ${1}`
   SSM_TARGET_HOST=$(echo "${INSTANCES}" | \
 		  peco --initial-index=0 --prompt='ssm > ' | \
@@ -663,26 +724,42 @@ function awspfrds(){
 		  awk '{print $1}')
   if [ -n "${SSM_TARGET_HOST}" ]; then
     aws ssm start-session --profile ${1} --target ${SSM_TARGET_HOST} \
+          --cli-read-timeout 0 \
+          --cli-connect-timeout 0 \
           --document-name AWS-StartPortForwardingSessionToRemoteHost \
-		  --parameters "{\"host\":[\"${RDS_TARGET_HOST}\"],\"portNumber\":[\"3306\"], \"localPortNumber\":[\"3306\"]}"
+		  --parameters "{\"host\":[\"${RDS_TARGET_HOST}\"],\"portNumber\":[\"3306\"], \"localPortNumber\":[\"13306\"]}"
   fi
 }
 complete -F _compreply_awsprofile awspfrds
-function awsec2 () {
+function awslogtail()
+{
+  local LOGGROUPS=`awsloggroups ${1}`
+  TARGET_LOGGROUP=$(echo "${LOGGROUPS}" | \
+		  peco --initial-index=0 --prompt='log grpups > ' | \
+		  awk '{print $1}')
+  if [ -n "${TARGET_LOGGROUP}" ]; then
+    aws logs --profile ${1} tail --format short --since 60m --follow ${TARGET_LOGGROUP}
+  fi
+}
+complete -F _compreply_awsprofile awslogtail
+function awsec2 () 
+{
   aws ec2 describe-instances \
   --profile ${1} \
   --query 'Reservations[].Instances[].{ID:InstanceId, Name:Tags[?Key==`Name`] | [0].Value, State:State.Name}' \
   --output text | column -t
 }
 complete -F _compreply_awsprofile awsec2
-function awsrds () {
+function awsrds () 
+{
   aws rds describe-db-instances \
   --profile ${1} \
   --query 'DBInstances[].{ID:DBInstanceIdentifier, Class:DBInstanceClass, Address:Endpoint.Address, Name:TagList[?Key==`Name`] | [0].Value, State:DBInstanceStatus}' \
   --output text | column -t
 }
 complete -F _compreply_awsprofile awsrds
-function awssecrets () {
+function awssecrets () 
+{
   for NAME in `aws secretsmanager list-secrets \
 		  --profile ${1} \
 		  --query "SecretList[].Name" \
@@ -696,6 +773,71 @@ function awssecrets () {
   done
 }
 complete -F _compreply_awsprofile awssecrets
+function awsloggroups () 
+{
+  aws logs describe-log-groups\
+  --profile ${1} \
+  --query 'logGroups[].logGroupName' \
+  --output text | sed -e 's/\t/\n/g' | grep ^dxp | grep ecm
+}
+complete -F _compreply_awsprofile awsloggroups
+function ecs_info ()
+{
+  CLUSTOR=`aws ecs \
+    --profile ${1} list-clusters | \
+    jq -r .clusterArns[] | grep ecm`
+
+  TASK_ID_LIST=`aws ecs --profile ${1} list-tasks \
+    --cluster ${CLUSTOR} \
+    --query "taskArns" \
+    --output text`
+
+  for TASK_ID_ARN in ${TASK_ID_LIST}
+  do
+    TASK_ID=`echo "${TASK_ID_ARN}" | sed -e 's/.*\///'`
+    CONTAINER=`aws ecs --profile ${1} describe-tasks \
+      --cluster ${CLUSTOR} \
+      --tasks ${TASK_ID} \
+      --query 'tasks[].containers[].name' \
+	  --output text`
+    printf "%s\t%s\t%s\n" ${TASK_ID} ${CONTAINER} ${CLUSTOR}
+  done
+}
+function ecslogin()
+{
+  local TASKLIST=`ecs_info ${1}`
+  TASK_INFOS=$(echo "${TASKLIST}" | \
+		  peco --initial-index=0 --prompt='ecs tasks > ' | \
+		  awk '{print $0}')
+  if [ -n "${TASK_INFOS}" ]; then
+    #aws logs --profile ${1} tail --format short --since 60m --follow ${TARGET_LOGGROUP}
+	clear
+	CLUSTOR=`echo ${TASK_INFOS} | cut -f3 -d' '`
+	TASK_ID=`echo ${TASK_INFOS} | cut -f1 -d' '`
+	CONTAINER=`echo ${TASK_INFOS} | cut -f2 -d' '`
+	aws ecs execute-command \
+      --profile ${1} \
+      --cluster ${CLUSTOR} \
+      --task ${TASK_ID} \
+      --container ${CONTAINER} \
+      --interactive \
+      --command "//bin/bash"
+
+  fi
+}
+complete -F _compreply_awsprofile ecslogin
+
+function dockerip() 
+{
+  dcontext=$(docker ps | grep -v CONTAINER | sed -e 's/  */ /g' | cut -f1,2 -d" " | \
+		  peco --initial-index=0 --prompt='container > ' | \
+		  awk '{print $1}')
+  #clear
+  if [ -n "$dcontext" ]; then
+    docker inspect $dcontext | grep IPAddress
+  fi
+}
+
 complete -C aws_completer aws
 source <(kubectl completion bash)
 ```
