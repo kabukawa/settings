@@ -26,6 +26,7 @@
 * [A5SQL Mk2](https://a5m2.mmatsubara.com/)
 * [MySQL Workbench](https://www.mysql.com/jp/products/workbench/)
 * [Data Grip](https://www.jetbrains.com/ja-jp/datagrip/)
+* [MongoDB Compass](https://www.mongodb.com/try/download/shell)
 
 ### 統合開発環境
 
@@ -59,6 +60,17 @@
 
 * [JTrim](https://forest.watch.impress.co.jp/library/software/jtrim/)
 * [GIMP](https://forest.watch.impress.co.jp/library/software/gimp/)
+
+### Cloud CLI
+
+* [Azure CLI](https://aka.ms/installazurecliwindows)
+* [AWS CLI](https://awscli.amazonaws.com/AWSCLIV2.msi)
+* [AWS Session Manager Plugin](https://s3.amazonaws.com/session-manager-downloads/plugin/latest/windows/SessionManagerPluginSetup.exe)
+* [Heroku CLI](https://devcenter.heroku.com/ja/articles/heroku-cli#install-the-heroku-cli)
+
+### Utility
+
+* [DevToys](https://apps.microsoft.com/store/detail/devtoys/9PGCV4V3BK4W?hl=ja-jp&gl=jp)
 
 ### WSL(Windows Subsystem for Linux)追加パッケージ
 
