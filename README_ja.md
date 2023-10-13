@@ -74,7 +74,7 @@
 
 ### WSL(Windows Subsystem for Linux)追加パッケージ
 
-Ubuntu 18.04
+Ubuntu 18.04/20.04
 
 パッケージ最新化
 
@@ -435,7 +435,7 @@ fi
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][GitBash] \u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}[GitBash: \u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}[GitBash]: \u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -507,9 +507,9 @@ alias ssh='ssh -o ServerAliveInterval=60'
 alias jq='jq -C'
 alias cdh='cd ~/Documents'
 alias cdd='cd ~/Downloads'
-alias dev='cd ~/Documents/dev'
 alias nostat="egrep -v '/(api/(status|doc)|bootstrap|jquery|ui|signin|public|health_check|HealthCheck::)'"
 alias kubelog="kubectl stern -t "
+alias kevent="kubectl get events --sort-by='.metadata.creationTimestamp' -A"
 alias stern="kubectl-stern --timestamps "
 alias aws_completer='/c/Program\ Files/Amazon/AWSCLIV2/aws_completer | 2lf'
 alias mongo="mongosh"
@@ -520,6 +520,10 @@ alias kcc="kubectl config current-context | s2u | 2lf"
 alias tenki="curl https://wttr.in/Chiba"
 alias awsmfa='aws-mfa --profile '
 alias rehash='. ~/.bashrc'
+alias addbom='nkf --overwrite --oc=UTF-8-BOM'
+alias uft8conv='nkf --overwrite --oc=UTF-8 -Lu'
+alias pwgen='wsl pwgen -y -n -c 16 1'
+export LANG="ja_JP.utf8"
 
 export LC_ALL=ja_JP.utf8
 export LANG=ja_JP.utf8
@@ -553,7 +557,11 @@ function u2s ()
 }
 function u2l ()
 {
-  date --date "@$1" +"%Y-%m-%d %H:%M:%S"
+  if [ ${#1} -eq 10 ]; then
+    date --date "@$1" +"%Y-%m-%d %H:%M:%S"
+  elif [ ${#1} -ge 13 ]; then
+    date --date "@${1:0:10}.${1:10:3}" +"%Y-%m-%d %H:%M:%S.%3N"
+  fi
 }
 function l2u ()
 {
@@ -717,10 +725,12 @@ function awsssm()
 {
   local INSTANCES=`awsec2 ${1}`
   SSM_TARGET_HOST=$(echo "${INSTANCES}" | \
-		  peco --initial-index=0 --prompt='ssm > ' | \
-		  awk '{print $1}')
+      peco --initial-index=0 --prompt='ssm > ' | \
+      awk '{print $1}')
   if [ -n "${SSM_TARGET_HOST}" ]; then
+    chcp.com 65001
     aws ssm start-session --profile ${1} --target ${SSM_TARGET_HOST}
+    chcp.com 932
   fi
 }
 complete -F _compreply_awsprofile awsssm
